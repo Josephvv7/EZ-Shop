@@ -84,7 +84,11 @@ public class ProductsController
     {
         try
         {
-            productDao.create(product);
+
+            /* FOUND THE BUG productDao.create(product); updateProduct method seems to have the same parameters as the addProduct method which is causing issues.
+        */
+            productDao.update(id, product);
+
         }
         catch(Exception ex)
         {
