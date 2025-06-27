@@ -2,20 +2,25 @@
 
 ## Description of the Project
 
-Briefly describe what this Java console application does. Mention its purpose and who the intended users are. Explain the main functionality and what problems it aims to solve.
-
-![Class Diagram](path/to/your/class_diagram.png)
+EZ-Shop is a Java-based RESTful web application designed to support a simple e-commerce platform. It enables users to browse products, manage categories, and perform CRUD operations securely. The project serves as a learning tool for understanding Java Spring Boot APIs, security with role-based access, and integration with front-end clients or tools like Postman. Intended users include developers exploring RESTful API design and small businesses interested in basic inventory and catalog management systems.
 
 ## User Stories
 
-List the user stories that guided the development of your application. Format these stories as: "As a [type of user], I want [some goal] so that [some reason]."
+- As a shopper, I want to browse products by category so that I can easily find items I'm interested in.
 
-- As a user, I want to be able to input my data, so that the application can process it accordingly.
-- As a user, I want to receive immediate feedback, so I can understand what to do next.
+
+- As an admin, I want to add, update, and delete products and categories so that I can keep the catalog up to date.
+
+
+- As a user, I want to register and log in so that I can access personalized features.
+
+
+- As a developer, I want clear API endpoints so that I can integrate this backend with a front-end application.
+
+
+- As an admin, I want secure role-based access so that unauthorized users can’t modify data.
 
 ## Setup
-
-Instructions on how to set up and run the project using IntelliJ IDEA.
 
 ### Prerequisites
 
@@ -30,42 +35,57 @@ Follow these steps to get your application running within IntelliJ IDEA:
 2. Select "Open" and navigate to the directory where you cloned or downloaded the project.
 3. After the project opens, wait for IntelliJ to index the files and set up the project.
 4. Find the main class with the `public static void main(String[] args)` method.
-5. Right-click on the file and select 'Run 'YourMainClassName.main()'' to start the application.
+5. Right-click on the file and select 'Run `EzShopApplication.main()` to start the application.
+6. The API will be available by default at `http://localhost:8080`
 
 ## Technologies Used
 
-- Java: Mention the version you are using.
-- Any additional libraries or frameworks used in the project.
+- Java 17
+- Spring Boot 
+- Spring Security
+- Postman (for testing endpoints)
 
 ## Demo
 
-Include screenshots or GIFs that show your application in action. Use tools like [Giphy Capture](https://giphy.com/apps/giphycapture) to record a GIF of your application.
-
-![Application Screenshot](path/to/your/screenshot.png)
+![Demo 1](demo1.gif)
+![Demo 2](demo2.gif)
+![Demo 3](demo3.gif)
+![Demo 4](demo4.gif)
 
 ## Future Work
 
-Outline potential future enhancements or functionalities you might consider adding:
+- Add JWT authentication for token-based security.
 
-- Additional feature to be developed.
-- Improvement of current functionalities.
+
+- Implement order processing and checkout flow.
+
+
+- Add pagination and filtering to product listings.
+
+
+- Create a front-end interface (React or Angular) to interact with the API.
 
 ## Resources
 
 List resources such as tutorials, articles, or documentation that helped you during the project.
 
-- [Java Programming Tutorial](https://www.example.com)
-- [Effective Java](https://www.example.com)
+- [Java Programming Tutorial](https://www.learnjavaonline.org)
+- [Spring Boot Reference Guide](spring.io/projects/spring-boot/)
+- [Spring Security Tutorial](https://www.baeldung.com/security-spring)
 
 ## Team Members
 
-- **Name 1** - Specific contributions or roles.
-- **Name 2** - Specific contributions or roles.
+- **Joseph Villafane Valencia** - Developer, API Design, Tester
+- **Raymond Maroun** - Instructor and Mentor.
 
 ## Thanks
 
-Express gratitude towards those who provided help, guidance, or resources:
+- Thank you to my instructors and peers for support and guidance throughout this project.
 
-- Thank you to [Mentor's Name] for continuous support and guidance.
-- A special thanks to all teammates for their dedication and teamwork.
+
+- Special thanks to the open-source community for resources and examples that helped shape this application.
+
+
+- Thank you to [Raymond] for continuous support and guidance.
+
  
