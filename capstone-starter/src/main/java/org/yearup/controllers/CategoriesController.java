@@ -38,15 +38,25 @@ public class CategoriesController
     }
 
     @GetMapping("{id}")
-    public Category getById(@PathVariable int id)
-    {
-        return categoryDao.getById(id);
+    public Category getById(@PathVariable int id) {
+        try {
+            Category category = categoryDao.getById(id);
+            if (category == null) {
+                throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Category not found");
+            }
+            return category;
+        } catch (Exception e) {
+            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Unable to fetch category");
+        }
     }
 
     @GetMapping("{categoryId}/products")
-    public List<Product> getProductsById(@PathVariable int categoryId)
-    {
-        return productDao.listByCategoryId(categoryId);
+    public List<Product> getProductsById(@PathVariable int categoryId) {
+        try {
+            return productDao.listByCategoryId(categoryId);
+        } catch (Exception e) {
+            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Unable to fetch products by category");
+        }
     }
 
     @PostMapping
