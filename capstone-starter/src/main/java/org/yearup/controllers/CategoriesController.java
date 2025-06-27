@@ -17,13 +17,12 @@ import java.util.List;
 @RestController
 @RequestMapping("/categories")
 @CrossOrigin
-public class CategoriesController
-{
+public class CategoriesController {
     private CategoryDao categoryDao;
     private ProductDao productDao;
 
     @Autowired
-    public CategoriesController(CategoryDao categoryDao, ProductDao productDao){
+    public CategoriesController(CategoryDao categoryDao, ProductDao productDao) {
         this.categoryDao = categoryDao;
         this.productDao = productDao;
     }
@@ -46,7 +45,7 @@ public class CategoriesController
             }
             return category;
         } catch (Exception e) {
-            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Unable to fetch category");
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Unable to fetch category");
         }
     }
 
@@ -61,26 +60,36 @@ public class CategoriesController
 
     @PostMapping
     @PreAuthorize("hasRole('ROLE_ADMIN')")
-    public Category addCategory(@RequestBody Category category)
-    {
-        return categoryDao.create(category);
+    public Category addCategory(@RequestBody Category category) {
+        try {
+            return categoryDao.create(category);
+        } catch (Exception e) {
+            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Unable to create category");
+        }
     }
 
     @PutMapping("{id}")
     @PreAuthorize("hasRole('ROLE_ADMIN')")
-    public void updateCategory(@PathVariable int id, @RequestBody Category category)
-    {
-
-        categoryDao.update(id, category);
+    public void updateCategory(@PathVariable int id, @RequestBody Category category) {
+        try {
+            categoryDao.update(id, category);
+        } catch (Exception e) {
+            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Unable to update category");
+        }
     }
 
-
-    // add annotation to call this method for a DELETE action - the url path must include the categoryId
     @DeleteMapping("{id}")
-    // add annotation to ensure that only an ADMIN can call this function
     @PreAuthorize("hasRole('ROLE_ADMIN')")
-    public void deleteCategory(@PathVariable int id)
-    {
-        categoryDao.delete(id);
+    public void deleteCategory(@PathVariable int id) {
+        try {
+            Category category = categoryDao.getById(id);
+            if (category == null) {
+                // This returns error 404.
+                throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Category not found");
+            }
+            categoryDao.delete(id);
+        } catch (Exception e) {
+            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Unable to delete category");
+        }
     }
 }
